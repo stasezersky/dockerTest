@@ -5,14 +5,17 @@ FROM alpine
 LABEL maintainer="nigelpoulton@hotmail.com"
 
 # Install Node and NPM
-RUN apk add --update nodejs nodejs-npm
+RUN apk add --update nodejs nodejs-npm git
 
+RUN git clone https://github.com/nigelpoulton/psweb.git
 # Copy app to /src
-COPY . /src
+# COPY . /src
 
-WORKDIR /src
+# WORKDIR /src
 
-# Install dependencies
+# Install dependencies\
+WORKDIR /psweb
+
 RUN  npm install
 
 EXPOSE 8080
